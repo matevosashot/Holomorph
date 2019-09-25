@@ -50,6 +50,7 @@ gt.add_curve( 1j+0.1*np.exp(np.pi * 2j * np.linspace(0,1,200, endpoint=True)), l
 gt.transform("output/sample_function.mp4", seconds=16, fps=60,
 	figsize=(10, 10), dpi=200, plus_reverse=True)
 ```
+This code evaluates $h(z, t)$ from $t=0$ to $t=1$ continuously, during 16 seconds, then runs backward animation.
 
 Note that any 2d-to-2d function can be made into complex-valued, not necessarily holomorphic function. For example, we can visualize linear transformations as well.
 
@@ -64,3 +65,13 @@ def  linear_function(A):
 		return x + y * 1j
 	return f
 ```
+
+## Useful tools
+
+From Complex analysis we know that there are [different branches of logarithm](https://en.wikipedia.org/wiki/Complex_logarithm). We introduce logarithm function for custom branch:
+
+```python
+from functions import log, PI
+```
+For example `log(x, -PI)` is the _Principal branch of logarithm_.
+Argument of `log(x, q)` is in range $[q~..~2\pi+q]$.

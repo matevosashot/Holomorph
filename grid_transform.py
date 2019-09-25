@@ -51,6 +51,7 @@ class GridTransformer:
         if fz is None:
             fz = self.f(z)
         self.curves.append(((z, fz), style))
+        return self
         
     def add_grid_to_curves(self):
         """
@@ -103,6 +104,8 @@ class GridTransformer:
         for (z, fz), style in self.curves:
             p = self.transition(z, fz, t)
             plt.plot(np.real(p), np.imag(p), **style)
+        fig.tight_layout()
+        
         if save_path is not None:
             if os.path.splitext(save_path)[1] != ".png":
                 save_path += '.png'
@@ -151,7 +154,7 @@ class GridTransformer:
         """
         frames = []
         frames.append(np.linspace(0, 1,int(seconds * fps), endpoint=True))
-        frames.append(np.ones((int(fps*0.5))))
+        frames.append(np.ones((int(fps*1)))) #wait one second
         
         if plus_reverse:
             frames.append(np.linspace(1, 0,int(seconds * fps), endpoint=True))
@@ -177,6 +180,7 @@ class GridTransformer:
 
         fig = plt.figure(**fig_kwargs)
         ax = plt.axes(xlim=self.plt_xlim, ylim=self.plt_ylim, aspect="equal")
+        fig.tight_layout()
         
         def init_plot():
             lines = []

@@ -1,3 +1,6 @@
+import matplotlib
+
+
 class HoverCursor(object):
     """A simple data cursor widget that displays the x,y location of a
     matplotlib artist when it is selected."""
@@ -63,7 +66,7 @@ class HoverCursor(object):
 
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
-    plt.figure()
+    plt.figure(figsize=(16, 8), dpi=200)
     plt.subplot(2, 1, 1)
     line1, = plt.plot(range(10), 'ro-')
     plt.subplot(2, 1, 2)

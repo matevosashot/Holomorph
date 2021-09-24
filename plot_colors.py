@@ -58,7 +58,7 @@ class ColorPlot:
         return Z, W
 
     def _plot(self):
-        fig = plt.figure(figsize=self.figsize, dpi=150)
+        fig = plt.figure(figsize=self.figsize, dpi=self.dpi)
         ax_id = plt.subplot(121)
         plt.title("Input")
         plt.imshow(self._colors(self.Z.T, self.color_power, self.color_clip),
